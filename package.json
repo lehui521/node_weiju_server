@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node app.js"
+    "start": "nodemon --watch src/**/*.ts --exec \"ts-node\" src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.11.0",
-    "koa-router": "^8.0.8"
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^8.0.8",
+    "koa2-cors": "^2.0.6"
   },
   "devDependencies": {
     "@types/koa": "^2.11.3",
@@ -24,5 +26,11 @@
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*"
+    ],
+    "extensions": "js,ts,json"
   }
 }
