@@ -26,11 +26,5 @@
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "node_modules/*"
-    ],
-    "extensions": "js,ts,json"
   }
 }
