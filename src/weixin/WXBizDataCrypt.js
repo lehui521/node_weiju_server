@@ -5,10 +5,10 @@ function WXBizDataCrypt(appId, sessionKey) {
   this.sessionKey = sessionKey
 }
 
-WXBizDataCrypt.prototype.decryptData = function (encryptedData, iv) {
+WXBizDataCrypt.prototype.decryptData = function (encryptedDataStr, iv) {
   // base64 decode
   var sessionKey = Buffer.from(this.sessionKey, 'base64')
-  encryptedData = Buffer.from(encryptedData, 'base64')
+  var encryptedData = Buffer.from(encryptedDataStr, 'base64')
   iv = Buffer.from(iv, 'base64')
 
   try {
@@ -22,11 +22,11 @@ WXBizDataCrypt.prototype.decryptData = function (encryptedData, iv) {
     decoded = JSON.parse(decoded)
 
   } catch (err) {
-    throw new Error('Illegal Buffer')
+    throw new Error('Illegal Buffer小错')
   }
 
   if (decoded.watermark.appid !== this.appId) {
-    throw new Error('Illegal Buffer')
+    throw new Error('Illegal Buffer报错')
   }
 
   return decoded
